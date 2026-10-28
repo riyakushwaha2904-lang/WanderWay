@@ -11,7 +11,14 @@ const app = express();
 
 
 
-app.use(cors({ origin: 'http://localhost:61008' }));
+aconst allowedOrigins = [
+  'http://localhost:4200',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
+app.use(cors({
+  origin: allowedOrigins
+}));
 
 app.use(express.json());
 
